@@ -32,7 +32,6 @@ class RegistroActivity : AppCompatActivity() {
                 startActivity(i)
         }
 
-
         btnRegistro.setOnClickListener {
             val nombre = etNombre.text.toString()
             val apellido = etApellido.text.toString()
@@ -40,22 +39,17 @@ class RegistroActivity : AppCompatActivity() {
             val passw = etPassw.text.toString()
             val repPassw = etRepPassw.text.toString()
 
-
             if (nombre.isNotBlank() && apellido.isNotBlank() && email.isNotBlank()
                 && passw.isNotBlank() && repPassw.isNotBlank()) {
 
                 registradosDBHelper.anadirdato(nombre, apellido, email, passw, repPassw)
 
                 Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this,PerfilActivity::class.java))
+                startActivity(Intent(this,InicioActivity::class.java))
             }
-
             else {
-
                 Toast.makeText(this, "No se ha podido guardar", Toast.LENGTH_LONG).show()
             }
         }
-
     }
-
 }

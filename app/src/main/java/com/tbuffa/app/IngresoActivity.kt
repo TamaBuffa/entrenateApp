@@ -15,7 +15,7 @@ class IngresoActivity : AppCompatActivity() {
 
         val btnIngreso=findViewById<Button>(R.id.btnLogin)
         btnIngreso.setOnClickListener {
-            val i= Intent(this,PerfilActivity::class.java)
+            val i= Intent(this,InicioActivity::class.java)
             startActivity(i)
         }
 

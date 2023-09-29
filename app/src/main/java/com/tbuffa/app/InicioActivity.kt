@@ -11,19 +11,26 @@ class InicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inicio_activity)
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater =menuInflater
-        inflater.inflate(R.menu.menu,menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item:MenuItem): Boolean {
-       when (item.itemId) {
 
-            R.id.itemHome-> Toast.makeText(this,"Home", Toast.LENGTH_SHORT).show()
-       }
 
-           return super.onOptionsItemSelected(item)
-        }
-    }
+}
 
+
+
+//**Menu que no funcionó**//
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        val inflater: MenuInflater =menuInflater
+//        inflater.inflate(R.menu.menu,menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item:MenuItem): Boolean {
+//       when (item.itemId) {
+//            R.id.itemHome->{ Toast.makeText(this,"Home", Toast.LENGTH_SHORT).show()
+//            return true
+//       }
+//           else -> return super.onOptionsItemSelected(item)
+//       }
+//    }
