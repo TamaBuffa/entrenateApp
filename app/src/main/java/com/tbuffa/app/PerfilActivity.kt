@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 
@@ -16,12 +17,14 @@ class PerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
-        val btnCamara=findViewById<Button>(R.id.btnCamera)
 
-        btnCamara.setOnClickListener {
+        val tvCamara=findViewById<TextView>(R.id.tvCamara)
+        tvCamara.setOnClickListener {
             startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
         }
     }
+
+
 
        private val startForResult= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->
@@ -29,7 +32,7 @@ class PerfilActivity : AppCompatActivity() {
            if (result.resultCode == Activity.RESULT_OK){
                val intent=result.data
                val imageBitmap=intent?.extras?.get("data") as Bitmap
-               val imageView=findViewById<ImageView>(R.id.ivCamera)
+               val imageView=findViewById<ImageView>(R.id.ivCamara)
                imageView.setImageBitmap(imageBitmap)
            }
        }
