@@ -17,6 +17,30 @@
         android:theme="@style/Theme.App"
         tools:targetApi="31">
         <activity
+            android:name=".entrena_brazos_elevacioneslaterales"
+            android:exported="false" />
+        <activity
+            android:name=".grillaEntrenaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EntrenaFuerzaEje5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EntrenaFuerzaEje4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EntrenaPiernasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EntrenaBrazosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EntrenaAbdominalesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EntrenaActivity"
+            android:exported="false" />
+        <activity
             android:name=".PerfilActivity"
             android:exported="false" />
         <activity

@@ -2,4 +2,13 @@
     <string name="app_name">App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="elevaciones_laterales">
+
+         Comienza con los pies juntos y los brazos a los lados a continuación, salta con los pies separados y las manos sobre la cabeza
+        \n\nVuelve a la posición original y realiza la siguiente repetición.
+         \n\nEste ejercicio sirve para entrenar todo el cuerpo y trabaja todos los grandes grupos musculares.
+    </string>
+    
 </resources>

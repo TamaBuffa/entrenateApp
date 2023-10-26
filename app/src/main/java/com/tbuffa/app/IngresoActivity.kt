@@ -5,26 +5,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.tbuffa.app.databinding.ActivityPerfilBinding
+import com.tbuffa.app.databinding.IngresoActivityBinding
 
 class IngresoActivity : AppCompatActivity() {
 
+    lateinit var binding: IngresoActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ingreso_activity)
+        binding= IngresoActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        val btnIngreso=findViewById<Button>(R.id.btnLogin)
-        btnIngreso.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             val i= Intent(this,InicioActivity::class.java)
             startActivity(i)
         }
 
-        val tvIrRegitrarse=findViewById<TextView>(R.id.tvIrRegistrarse)
-        tvIrRegitrarse.setOnClickListener{
-            val i= Intent(this,RegistroActivity::class.java)
-            startActivity(i)
-        }
-    }
+          binding.tvIrRegistrarse.setOnClickListener{
+              val i= Intent(this,RegistroActivity::class.java)
+              startActivity(i)
+          }
+ }
 
 
 }
