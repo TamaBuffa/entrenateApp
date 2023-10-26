@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/usuario1"
-    tools:context=".PerfilActivity">
+    tools:context=".views.PerfilActivity">
 
 <ScrollView
     android:layout_width="match_parent"

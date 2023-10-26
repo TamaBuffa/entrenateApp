@@ -1,13 +1,13 @@
-package com.tbuffa.app
+package com.tbuffa.app.model
 
 import java.io.Serializable
 
-data class detalleUsuarios(
-    val id: Int,
+data class Usuario(
+    var id: Long,
     var nombre: String,
     var apellido: String,
     var email: String,
-    val password:String,
-    val reppass: String,
+    var password:String,
+    var reppass: String,
 ):Serializable
 

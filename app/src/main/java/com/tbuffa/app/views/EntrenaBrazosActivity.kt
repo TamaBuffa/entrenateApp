@@ -1,9 +1,8 @@
-package com.tbuffa.app
+package com.tbuffa.app.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.tbuffa.app.databinding.ActivityEntrenaAbdominalesBinding
 import com.tbuffa.app.databinding.ActivityEntrenaBrazosBinding
 
 class EntrenaBrazosActivity : AppCompatActivity() {
@@ -15,7 +14,7 @@ class EntrenaBrazosActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnElevacionesLaterales.setOnClickListener() {
-            val intent = Intent(this, entrena_brazos_elevacioneslaterales::class.java)
+            val intent = Intent(this, TemporizadorActivity::class.java)
             startActivity(intent)
 
 

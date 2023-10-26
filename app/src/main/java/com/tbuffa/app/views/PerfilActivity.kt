@@ -1,47 +1,37 @@
-package com.tbuffa.app
+package com.tbuffa.app.views
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewParent
-import android.widget.Button
-import android.widget.CursorAdapter
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.tbuffa.app.databinding.ActivityMainBinding
+import com.tbuffa.app.R
 import com.tbuffa.app.databinding.ActivityPerfilBinding
-import com.tbuffa.app.databinding.InicioActivityBinding
+import com.tbuffa.app.repository.DbHelper
+import com.tbuffa.app.repository.UsuarioRepository
 
-    class PerfilActivity : AppCompatActivity() {
+class PerfilActivity : AppCompatActivity() {
 
         lateinit var binding: ActivityPerfilBinding
-        lateinit var registradosDBHelper: sqlLite
+        lateinit var usuarioRepository: UsuarioRepository
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             binding = ActivityPerfilBinding.inflate(layoutInflater)
             setContentView(binding.root)
-
-            registradosDBHelper = sqlLite(this)
+            usuarioRepository = UsuarioRepository()
 
             val email = intent.getStringExtra("emailUsuario")
-            val nombre = registradosDBHelper.consultarPorEmail("prueba1234@gmail.com")
+            val usuarios = usuarioRepository.getPorEmail("prueba1234@gmail.com", this)
 
 
-            if (nombre != null) {
-                binding.tvNombrePerfil.text = nombre
+            if (usuarios != null) {
+                binding.tvNombrePerfil.text = usuarios.get(0).nombre
 
             } else {
                 Toast.makeText(this, "Usuario no encontrado en la base de datos", Toast.LENGTH_SHORT).show()

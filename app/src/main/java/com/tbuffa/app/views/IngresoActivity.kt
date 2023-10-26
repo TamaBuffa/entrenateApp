@@ -1,11 +1,8 @@
-package com.tbuffa.app
+package com.tbuffa.app.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import com.tbuffa.app.databinding.ActivityPerfilBinding
 import com.tbuffa.app.databinding.IngresoActivityBinding
 
 class IngresoActivity : AppCompatActivity() {
@@ -18,12 +15,12 @@ class IngresoActivity : AppCompatActivity() {
 
 
         binding.btnLogin.setOnClickListener {
-            val i= Intent(this,InicioActivity::class.java)
+            val i= Intent(this, InicioActivity::class.java)
             startActivity(i)
         }
 
           binding.tvIrRegistrarse.setOnClickListener{
-              val i= Intent(this,RegistroActivity::class.java)
+              val i= Intent(this, RegistroActivity::class.java)
               startActivity(i)
           }
  }

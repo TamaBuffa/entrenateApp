@@ -1,4 +1,4 @@
-package com.tbuffa.app
+package com.tbuffa.app.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

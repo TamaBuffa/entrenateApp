@@ -1,14 +1,12 @@
-package com.tbuffa.app
+package com.tbuffa.app.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.View
 import android.widget.Toast
-import com.tbuffa.app.databinding.ActivityEntrenaBrazosBinding
 import com.tbuffa.app.databinding.ActivityEntrenaBrazosElevacioneslateralesBinding
 
-class entrena_brazos_elevacioneslaterales : AppCompatActivity() {
+class TemporizadorActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityEntrenaBrazosElevacioneslateralesBinding
     private lateinit var countDownTimer: CountDownTimer
@@ -40,7 +38,7 @@ class entrena_brazos_elevacioneslaterales : AppCompatActivity() {
 
                 override fun onFinish() {
                     // El temporizador ha finalizado, aquí puedes realizar acciones adicionales
-                    Toast.makeText(this@entrena_brazos_elevacioneslaterales, "Temporizador finalizado",
+                    Toast.makeText(this@TemporizadorActivity, "Temporizador finalizado",
                         Toast.LENGTH_SHORT).show()
                 }
             }

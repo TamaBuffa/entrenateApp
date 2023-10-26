@@ -1,13 +1,11 @@
-package com.tbuffa.app
+package com.tbuffa.app.repository
 
-import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class sqlLite (context: Context) : SQLiteOpenHelper(context, "registrados.db", null, 1)
+class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados.db", null, 1)
 {
 
     //Cuando la bbdd no exista, y haya que crearla por primera vez
@@ -29,34 +27,12 @@ class sqlLite (context: Context) : SQLiteOpenHelper(context, "registrados.db", n
         onCreate(db)
     }
 
-    fun anadirdato(detalleUsuarios: detalleUsuarios){
-
-        val datos=ContentValues()
-        datos.put ("nombre",detalleUsuarios.nombre )
-        datos.put ("apellido", detalleUsuarios.apellido)
-        datos.put ("email", detalleUsuarios.email)
-        datos.put("password", detalleUsuarios.password)
-        datos.put("repetirPassword",detalleUsuarios.reppass)
-
-        val db= this.writableDatabase
-        db.insert("registrados", null, datos)
-        db.close()
+    fun getWrittingDataBase(): SQLiteDatabase {
+        return this.writableDatabase;
     }
 
-    fun consultarPorEmail(email: String): String? {
-        val db = this.readableDatabase
-        val cursor = db.rawQuery("SELECT nombre FROM registrados WHERE email = ?", arrayOf(email))
-
-        var nombre: String? = null
-
-        if (cursor.moveToFirst()) {
-            nombre = cursor.getString(1) // El índice 1 corresponde a la columna "nombre"
-        }
-
-        cursor.close()
-        db.close()
-
-        return nombre
+    fun getReadableDataBase(): SQLiteDatabase {
+        return this.readableDatabase;
     }
 
 }

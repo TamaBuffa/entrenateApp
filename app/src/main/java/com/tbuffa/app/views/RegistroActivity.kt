@@ -1,40 +1,51 @@
-package com.tbuffa.app
+package com.tbuffa.app.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.tbuffa.app.databinding.RegistroActivityBinding
+import com.tbuffa.app.model.Constants
+import com.tbuffa.app.model.Usuario
+import com.tbuffa.app.repository.UsuarioRepository
 
 class RegistroActivity : AppCompatActivity(){
-    lateinit var binding:RegistroActivityBinding
-    lateinit var registradosDBHelper: sqlLite
+    private lateinit var binding:RegistroActivityBinding
+    private lateinit var userRepository: UsuarioRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = RegistroActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        registradosDBHelper = sqlLite(this)
-
+        userRepository = UsuarioRepository()
         binding.btnRegistrarme.setOnClickListener {
-            if (binding.etNombre.text.isNotBlank() && binding.etApellido.text.isNotBlank() &&
-                binding.etEmail.text.isNotBlank() && binding.etPassw.text.isNotBlank() &&
-                binding.etRepPassw.text.isNotBlank()
-            ) {
-                registradosDBHelper.anadirdato(detalleUsuarios(-1,"nombre", "apellido",
-                    "email", "password", "repass"))
-
-                val intent = Intent(this, InicioActivity::class.java)
-                intent.putExtra("emailUsuario", binding.etEmail.text.toString())
-                startActivity(intent)
-                Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show()
-
-            } else {
-                Toast.makeText(this, "No se ha podido guardar", Toast.LENGTH_LONG).show()
-            }
+            guardarUsuario()
         }
 
+    }
+
+    private fun guardarUsuario() {
+        if (validateUser()) {
+            var usuario = getUser()
+            userRepository.guardar(usuario , this)
+
+            val intent = Intent(this, InicioActivity::class.java)
+            intent.putExtra(Constants.USER_ID, usuario.id)
+            startActivity(intent)
+            Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "No se ha podido guardar", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun getUser(): Usuario {
+        return Usuario(-1, binding.etNombre.text.toString(), "apellido", "email", "password", "repass")
+    }
+
+    private fun validateUser(): Boolean {
+        return binding.etNombre.text.isNotBlank() && binding.etApellido.text.isNotBlank() &&
+                binding.etEmail.text.isNotBlank() && binding.etPassw.text.isNotBlank() &&
+                binding.etRepPassw.text.isNotBlank()
     }
 }
 

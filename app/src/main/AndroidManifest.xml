@@ -17,7 +17,7 @@
         android:theme="@style/Theme.App"
         tools:targetApi="31">
         <activity
-            android:name=".entrena_brazos_elevacioneslaterales"
+            android:name=".views.TemporizadorActivity"
             android:exported="false" />
         <activity
             android:name=".grillaEntrenaActivity"
@@ -29,28 +29,28 @@
             android:name=".EntrenaFuerzaEje4Activity"
             android:exported="false" />
         <activity
-            android:name=".EntrenaPiernasActivity"
+            android:name=".views.EntrenaPiernasActivity"
             android:exported="false" />
         <activity
-            android:name=".EntrenaBrazosActivity"
+            android:name=".views.EntrenaBrazosActivity"
             android:exported="false" />
         <activity
-            android:name=".EntrenaAbdominalesActivity"
+            android:name=".views.EntrenaAbdominalesActivity"
             android:exported="false" />
         <activity
-            android:name=".EntrenaActivity"
+            android:name=".views.EntrenaActivity"
             android:exported="false" />
         <activity
-            android:name=".PerfilActivity"
+            android:name=".views.PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".InicioActivity"
+            android:name=".views.InicioActivity"
             android:exported="false" />
         <activity
             android:name=".inicioctivity"
             android:exported="false" />
         <activity
-            android:name=".InicioActivity"
+            android:name=".views.InicioActivity"
             android:exported="false" />
         <activity
             android:name=".ingreso"
@@ -59,17 +59,17 @@
             android:name=".principalActivity"
             android:exported="false" />
         <activity
-            android:name=".IngresoActivity"
+            android:name=".views.IngresoActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistroActivity"
+            android:name=".views.RegistroActivity"
             android:exported="false"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".MainActivity"
+            android:name=".views.MainActivity"
             android:exported="true"
             android:launchMode="singleInstance">
             <intent-filter>
