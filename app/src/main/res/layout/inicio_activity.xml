@@ -28,7 +28,7 @@
             android:id="@+id/tvsaludoNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/designer"
             android:textColor="@color/color_yellow"

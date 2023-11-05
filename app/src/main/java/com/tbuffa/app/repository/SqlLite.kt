@@ -5,20 +5,26 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados.db", null, 1)
+class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados", null, 1)
 {
 
-    //Cuando la bbdd no exista, y haya que crearla por primera vez
+    //Cuando la bbdd no exista, y haya que crearla por primera vez+
     //Crear la tabla y ejecutarla
 
-    override fun onCreate(db: SQLiteDatabase?) {
-            val ordenCreacion = "CREATE TABLE registrados " +
-                    "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "nombre TEXT, apellido TEXT, email TEXT,password TEXT, repetirPassword TEXT  )"
+    override fun onCreate(db:SQLiteDatabase?) {
+        val ordenCreacion = "CREATE TABLE registrados " +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nombre TEXT, apellido TEXT,email TEXT, password TEXT)"
+
+        db!!.execSQL(ordenCreacion)
+    }
+//
+//            val ordenCreacion = "CREATE TABLE registrados " +
+//                    "(id LONG PRIMARY KEY AUTOINCREMENT," +
+//                    "nombre TEXT,apellido TEXT,email TEXT,password TEXT)"
             //Le indicamos que ejecute la orden sql->creacion
-            //!!-no va a ser null, ejecuta la creacion
-            db!!.execSQL(ordenCreacion)
-        }
+            //!!-no va a ser null, ejecuta la creacion ,reppass TEXT
+
 
     //Si detecta que el numero de version actual (oldversion), es > al que se encuentra (newversion), y hay que actualizar
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

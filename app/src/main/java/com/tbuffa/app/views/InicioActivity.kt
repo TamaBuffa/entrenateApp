@@ -2,6 +2,8 @@ package com.tbuffa.app.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.tbuffa.app.databinding.ActivityPerfilBinding
 import com.tbuffa.app.databinding.InicioActivityBinding
 import com.tbuffa.app.model.Constants
 import com.tbuffa.app.model.Usuario
@@ -11,20 +13,37 @@ import kotlin.reflect.KClass
 class InicioActivity : AppCompatActivity() {
 
     lateinit var binding: InicioActivityBinding
-    lateinit var usuarioRepository: UsuarioRepository
-    var usuario: Usuario? = null
+    private lateinit var userRepository: UsuarioRepository
+    private var usuario: Usuario? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        inicializarActivity()
+        binding = InicioActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        if (usuario != null) {
-            binding.tvsaludoNombre.text = "Bienvenida ${usuario!!.email}"
+        userRepository = UsuarioRepository()
+
+//        val id = intent.getLongExtra(Constants.USER_ID, -1)
+        val email=intent.getStringExtra(Constants.USER_EMAIL)
+//        val nombre=intent.getStringExtra(Constants.USER_NOMBRE)
+
+
+        if (email != null) {
+//            Log.d("InicioActivity", "Valor de email: $email")
+            val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
+//            Log.d("InicioActivity", "Cantidad de usuarios encontrados: ${usuariosEncontrados.size}")
+            for (usuario in usuariosEncontrados) {
+                binding.tvsaludoNombre.text= "Bienvenida ${(usuario.nombre)}" }
         }
+
 
         binding.btnMiPerfil.setOnClickListener() {
-            goToPerfil()
+            val intent = Intent(this, PerfilActivity::class.java)
+            intent.putExtra(Constants.USER_EMAIL, email)
+            startActivity(intent)
         }
+
+
 
         binding.btnEntrena.setOnClickListener() {
             goToEntrenamiento()
@@ -32,9 +51,9 @@ class InicioActivity : AppCompatActivity() {
     }
 
 
+
     private fun goToEntrenamiento() {
         val intent = Intent(this, EntrenaActivity::class.java)
-        intent.putExtra("emailUsuario", usuario!!.email)
         startActivity(intent)
     }
     private fun goToPerfil() {
@@ -42,16 +61,46 @@ class InicioActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun inicializarActivity() {
-        binding = InicioActivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        usuarioRepository = UsuarioRepository()
-        var id = intent.getLongExtra(Constants.USER_ID, -1)
-        usuario = usuarioRepository.getById(id, this)
-    }
 
 }
 
+
+
+//            binding.tvsaludoNombre.text=  usuariosEncontrados.toString()
+
+//        val em=userRepository.getPorEmail(email.toString(),this)
+//      usuario = userRepository.getById(id, this)
+//      val em=userRepository.getPorEmail(email.toString(),this    )
+
+//        Log.d("InicioActivity", "Antes de llamar a getPorEmail")
+//        val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email.toString(), this)
+//        Log.d("InicioActivity", "Después de llamar a getPorEmail")
+//
+//        for (usuario in usuariosEncontrados) {
+//            Log.d("InicioActivity", "ID: ${usuario.id}, Nombre: ${usuario.nombre}, Email: ${usuario.email}")
+//        }
+
+//        binding.tvsaludoNombre.text = "Bienvenida ${(em)}"
+
+
+//        binding.btnMiPerfil.setOnClickListener() {
+//            goToPerfil()
+//        }
+
+
+
+
+
+
+
+
+
+//var id = intent.getLongExtra(usuario!!.id)
+//usuario= usuarioRepository.getById(id,this)
+
+//        usuario = usuarioRepository.getById(id, this)
+////        var nombre= intent.getStringExtra(usuario!!.nombre)
+//
 
 
 //
@@ -63,13 +112,3 @@ class InicioActivity : AppCompatActivity() {
 
 //        registradosDBHelper= sqlLite(this)
 
-
-
-
-
-
-
-
-
-
-//**Menu que no funcionó**//

@@ -30,7 +30,10 @@ class RegistroActivity : AppCompatActivity(){
             userRepository.guardar(usuario , this)
 
             val intent = Intent(this, InicioActivity::class.java)
-            intent.putExtra(Constants.USER_ID, usuario.id)
+            intent.putExtra(Constants.USER_EMAIL, usuario.email)
+//            intent.putExtra(Constants.USER_NOMBRE, usuario.nombre)
+//            intent.putExtra(Constants.USER_ID, usuario.id)
+
             startActivity(intent)
             Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show()
         } else {
@@ -39,13 +42,15 @@ class RegistroActivity : AppCompatActivity(){
     }
 
     private fun getUser(): Usuario {
-        return Usuario(-1, binding.etNombre.text.toString(), "apellido", "email", "password", "repass")
+        return Usuario(-1, binding.etNombre.text.toString(), binding.etApellido.text.toString(),
+            binding.etEmail.text.toString(),binding.etPassw.text.toString())
+//            ,binding.etRepPassw.text.toString())
     }
 
     private fun validateUser(): Boolean {
         return binding.etNombre.text.isNotBlank() && binding.etApellido.text.isNotBlank() &&
-                binding.etEmail.text.isNotBlank() && binding.etPassw.text.isNotBlank() &&
-                binding.etRepPassw.text.isNotBlank()
+                binding.etEmail.text.isNotBlank() && binding.etPassw.text.isNotBlank()
+//                && binding.etRepPassw.text.isNotBlank()
     }
 }
 

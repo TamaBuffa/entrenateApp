@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -12,57 +13,90 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.tbuffa.app.R
 import com.tbuffa.app.databinding.ActivityPerfilBinding
+import com.tbuffa.app.databinding.InicioActivityBinding
+import com.tbuffa.app.model.Constants
+import com.tbuffa.app.model.Usuario
 import com.tbuffa.app.repository.DbHelper
 import com.tbuffa.app.repository.UsuarioRepository
 
 class PerfilActivity : AppCompatActivity() {
 
         lateinit var binding: ActivityPerfilBinding
-        lateinit var usuarioRepository: UsuarioRepository
+        private lateinit var userRepository: UsuarioRepository
+        private var usuario: Usuario? = null
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             binding = ActivityPerfilBinding.inflate(layoutInflater)
             setContentView(binding.root)
-            usuarioRepository = UsuarioRepository()
 
-            val email = intent.getStringExtra("emailUsuario")
-            val usuarios = usuarioRepository.getPorEmail("prueba1234@gmail.com", this)
+            userRepository = UsuarioRepository()
+
+            val email = intent.getStringExtra(Constants.USER_EMAIL)
 
 
-            if (usuarios != null) {
-                binding.tvNombrePerfil.text = usuarios.get(0).nombre
+            if (email != null) {
+            Log.d("InicioActivity", "Valor de email: $email")
+                val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
+            Log.d("InicioActivity", "Cantidad de usuarios encontrados: ${usuariosEncontrados.size}")
 
-            } else {
-                Toast.makeText(this, "Usuario no encontrado en la base de datos", Toast.LENGTH_SHORT).show()
-
+                for (usuario in usuariosEncontrados) {
+                   binding.tvNombrePerfil.text= usuario.nombre
+                    binding.tvApellidoPerfil.text=usuario.apellido
+                    binding.tvEmailPerfil.text=usuario.email
+                }
             }
-
-
-
-
-
 
             binding.tvCamara.setOnClickListener() {
                 startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
+
             }
         }
 
 
 
 
-        private val startForResult= registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            private val startForResult= registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            {
+                    result: ActivityResult ->
 
-            if (result.resultCode == Activity.RESULT_OK) {
-                val intent = result.data
-                val imageBitmap = intent?.extras?.get("data") as Bitmap
-                val imageView = findViewById<ImageView>(R.id.ivCamara)
-                imageView.setImageBitmap(imageBitmap)
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val intent = result.data
+                    val imageBitmap = intent?.extras?.get("data") as Bitmap
+                    binding.ivCamara.setImageBitmap(imageBitmap)
+                }
+
             }
 
         }
 
-    }
+
+
+
+
+//            binding.tvCamara.setOnClickListener() {
+//                startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
+//            }
+//        }
+
+//
+//
+//        rivate fun inicializarActivity() {
+//            binding = ActivityPerfilBinding.inflate(layoutInflater)
+//            setContentView(binding.root)
+//            usuarioRepository = UsuarioRepository()
+//
+//            var id = intent.getLongExtra(Constants.USER_ID, -1)
+//
+//            usuario = usuarioRepository.getById(id, this)
+//        }
+
+
+
+
+
+
+
 
 
 

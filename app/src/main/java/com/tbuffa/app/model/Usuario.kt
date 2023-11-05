@@ -8,6 +8,7 @@ data class Usuario(
     var apellido: String,
     var email: String,
     var password:String,
-    var reppass: String,
+//    var reppass:String,
+
 ):Serializable
 

@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
+
     private fun regist(){
         val i= Intent(this, RegistroActivity::class.java)
         startActivity(i)

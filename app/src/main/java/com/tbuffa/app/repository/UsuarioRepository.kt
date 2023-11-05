@@ -11,10 +11,10 @@ class UsuarioRepository {
     fun guardar (usuario: Usuario, context:Context): Usuario{
         val datos= ContentValues()
         datos.put ("nombre",usuario.nombre )
-        datos.put ("apellido", usuario.apellido)
-        datos.put ("email", usuario.email)
-        datos.put("password", usuario.password)
-        datos.put("repetirPassword",usuario.reppass)
+        datos.put ("apellido",usuario.apellido)
+        datos.put ("email",usuario.email)
+        datos.put ("password",usuario.password)
+//        datos.put("reppass",usuario.reppass)
 
         val db = DbHelper(context).getWrittingDataBase()
         val id = db.insert("registrados", null, datos)
@@ -38,15 +38,19 @@ class UsuarioRepository {
     }
 
     private fun getUser(cursor: Cursor): Usuario? {
-        var user = Usuario( cursor.getLong(
-                cursor.getColumnIndexOrThrow("id")),
-                "",
-                "",
-                "",
-                "",
-                "") // El índice 1 corresponde a la columna "nombre"
+        var user = Usuario(
+            cursor.getLong(cursor.getColumnIndexOrThrow("id")),
+            cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+            cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+            cursor.getString(cursor.getColumnIndexOrThrow("email")),
+            cursor.getString(cursor.getColumnIndexOrThrow("password")))
+//            cursor.getString(cursor.getColumnIndexOrThrow("reppass"))
+
+
         return user
     }
+
+
     fun getPorEmail(email: String, context: Context): List<Usuario> {
         val db = DbHelper(context).getReadableDataBase()
         val query = "SELECT * FROM registrados WHERE email = ?"
@@ -69,3 +73,5 @@ class UsuarioRepository {
     }
 
 }
+
+
