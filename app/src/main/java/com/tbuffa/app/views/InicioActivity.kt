@@ -2,13 +2,11 @@ package com.tbuffa.app.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.tbuffa.app.databinding.ActivityPerfilBinding
+import com.tbuffa.app.databinding.ActivityTurnosHistorialBinding
 import com.tbuffa.app.databinding.InicioActivityBinding
 import com.tbuffa.app.model.Constants
 import com.tbuffa.app.model.Usuario
 import com.tbuffa.app.repository.UsuarioRepository
-import kotlin.reflect.KClass
 
 class InicioActivity : AppCompatActivity() {
 
@@ -23,30 +21,39 @@ class InicioActivity : AppCompatActivity() {
 
         userRepository = UsuarioRepository()
 
-//        val id = intent.getLongExtra(Constants.USER_ID, -1)
-        val email=intent.getStringExtra(Constants.USER_EMAIL)
-//        val nombre=intent.getStringExtra(Constants.USER_NOMBRE)
 
+        var email=intent.getStringExtra(Constants.USER_EMAIL)
+        var userId=intent.getLongExtra(Constants.USER_ID,0)
 
         if (email != null) {
-//            Log.d("InicioActivity", "Valor de email: $email")
             val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
-//            Log.d("InicioActivity", "Cantidad de usuarios encontrados: ${usuariosEncontrados.size}")
             for (usuario in usuariosEncontrados) {
-                binding.tvsaludoNombre.text= "Bienvenida ${(usuario.nombre)}" }
+                binding.tvsaludoNombre.text= "¡Hola ${(usuario.nombre)} !" }
         }
 
 
-        binding.btnMiPerfil.setOnClickListener() {
+        binding.ivMiPerfil.setOnClickListener() {
             val intent = Intent(this, PerfilActivity::class.java)
             intent.putExtra(Constants.USER_EMAIL, email)
             startActivity(intent)
         }
 
+        binding.ivTurno.setOnClickListener() {
+            val intent = Intent(this, turnoActivity::class.java)
+            intent.putExtra(Constants.USER_EMAIL, email)
+            intent.putExtra(Constants.USER_ID, userId)
+            startActivity(intent)
+        }
 
-
-        binding.btnEntrena.setOnClickListener() {
+        binding.ivEntrena.setOnClickListener() {
             goToEntrenamiento()
+        }
+
+
+        binding.ivHistorialTurnos.setOnClickListener(){
+            val intent = Intent(this,ActivityTurnosHistorialBinding::class.java)
+            intent.putExtra(Constants.USER_EMAIL, email)
+            startActivity(intent)
         }
     }
 
@@ -63,6 +70,249 @@ class InicioActivity : AppCompatActivity() {
 
 
 }
+
+
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        val inflater:MenuInflater=menuInflater
+//        inflater.inflate(R.menu.main_menu, menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+
+
+
+
+//        /*-----TOOLBAR------*/
+//        val toolbar:androidx.appcompat.widget.Toolbar=binding.toolbar
+//        setSupportActionBar(toolbar)
+//
+//        /*-----NAVIGATION DRAWER MENU------*/
+////        binding.navView.bringToFront()
+//        drawer=binding.drawerLayout
+//        toogle = ActionBarDrawerToggle(this, drawer, toolbar,
+//            R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+//       drawer.addDrawerListener(toogle)
+
+
+//        binding.navView.setNavigationItemSelectedListener(this)
+//        binding.navView.setCheckedItem(R.id.nav_perfil)
+
+//        val navigationView=binding.navView
+//        navigationView.setNavigationItemSelectedListener(this)
+
+
+
+
+
+
+
+//
+//    override fun onPostCreate(savedInstanceState: Bundle?) {
+//        super.onPostCreate(savedInstanceState)
+//        toogle.syncState()
+//
+//    }
+//
+//    override fun onConfigurationChanged(newConfig: Configuration) {
+//        super.onConfigurationChanged(newConfig)
+//        toogle.onConfigurationChanged(newConfig)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if(toogle.onOptionsItemSelected(item)){
+//        return true
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
+//
+//     override fun onOptionsItemSelected(menu: MenuItem): Boolean {
+//         return when (menu.itemId) {
+//            R.id.nav_perfil-> {
+//                goToSettings()
+//                true
+//            }
+//            R.id.nav_entrenamientos-> {
+//                Toast.makeText(this, "Opción 2 escogida", Toast.LENGTH_LONG).show()
+//                true
+//            }
+//            R.id.nav_turnos-> {
+//                Toast.makeText(this, "Opción 3 escogida", Toast.LENGTH_LONG).show()
+//                true
+//            }
+//
+//             R.id.nav_historialTurnos-> {
+//                 Toast.makeText(this, "Opción 3 escogida", Toast.LENGTH_LONG).show()
+//                 true
+//             }
+//
+//            else -> super.onOptionsItemSelected(menu)
+//
+//        }
+//}
+//
+//    private fun goToSettings() {
+//        val intent = Intent(this, PerfilActivity::class.java)
+//        startActivity(intent)
+//
+//}
+//}
+
+
+
+
+
+
+//        override fun onBackPressed() {
+//            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//                binding.drawerLayout.closeDrawer(GravityCompat.START)
+//            } else {
+//                super.onBackPressed()
+//            }
+//        }
+
+//
+//        override fun OnNavigationItemSelected(menuItem: MenuItem): Boolean {
+//            when (menuItem.itemId) {
+//                R.id.nav_perfil -> {
+//                    val intent = Intent(this, PerfilActivity::class.java)
+//                    startActivity(intent)
+//                }
+//
+//                R.id.nav_entrenamientos -> {
+//                    val intent = Intent(this, EntrenaActivity::class.java)
+//                    startActivity(intent)
+//                }
+//
+//                R.id.nav_turnos -> {
+//
+//                }
+//
+//                R.id.nav_historialTurnos -> {
+//
+//                }
+//
+//            }
+//
+//            return true
+//        }
+//
+//
+//    }
+//
+
+
+
+
+//    public void onBackPressed() {
+//        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            binding.drawerLayout.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed()
+//        }
+//    }
+//        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//            switch(menuItem.getItemId()) {
+//                case R . id . nav_perfil;
+//                break;
+//            }
+//        binding.drawerLayout.closeDrawer(GravityCompat.START)
+//        return true;
+//        }
+//    }
+
+
+
+
+
+
+
+//    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+//        when (menuItem.itemId) {
+//            R.id.nav_perfil -> {
+//                val intent = Intent(this, PerfilActivity::class.java)
+//                startActivity(intent)
+//                return true
+//            }
+//
+//            else -> return false
+//        }
+//    }
+//}
+
+
+
+//                R.id.nav_entrenamientos->{
+//                    Toast.makeText(this, "Entrenamientos", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this, EntrenaActivity::class.java)
+//                    startActivity(intent)
+//                    true
+//                }
+
+//                R.id.nav_turnos->{
+//                    Toast.makeText(this, "Turnos", Toast.LENGTH_SHORT).show()
+//                    true
+//                }
+//
+//                R.id.nav_historialTurnos->{
+//                    Toast.makeText(this, "Historial Turnos", Toast.LENGTH_SHORT).show()
+//                    true
+//                }
+
+
+
+
+
+
+
+
+
+
+
+//
+//        val id = intent.getLongExtra(Constants.USER_ID, -1)
+//
+//        val nombre=intent.getStringExtra(Constants.USER_NOMBRE)
+//
+//
+//        if (email != null) {
+////            Log.d("InicioActivity", "Valor de email: $email")
+//            val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
+////            Log.d("InicioActivity", "Cantidad de usuarios encontrados: ${usuariosEncontrados.size}")
+//            for (usuario in usuariosEncontrados) {
+//                binding.tvsaludoNombre.text= "Bienvenida ${(usuario.nombre)}" }
+//        }
+//
+//        binding.btnMiPerfil.setOnClickListener() {
+//            val intent = Intent(this, PerfilActivity::class.java)
+//            intent.putExtra(Constants.USER_EMAIL, email)
+//            startActivity(intent)
+//        }
+
+
+//        binding.btnEntrena.setOnClickListener() {
+//            goToEntrenamiento()
+//        }
+//    }
+
+
+
+//    private fun goToEntrenamiento() {
+//        val intent = Intent(this, EntrenaActivity::class.java)
+//        startActivity(intent)
+//    }
+//    private fun goToPerfil() {
+//        val intent = Intent(this, PerfilActivity::class.java)
+//        startActivity(intent)
+//    }
+
+
+//}
+
+
+
+
+
+
 
 
 

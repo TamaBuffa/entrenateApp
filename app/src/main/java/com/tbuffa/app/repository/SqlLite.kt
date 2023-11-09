@@ -14,7 +14,7 @@ class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados", nul
     override fun onCreate(db:SQLiteDatabase?) {
         val ordenCreacion = "CREATE TABLE registrados " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "nombre TEXT, apellido TEXT,email TEXT, password TEXT)"
+                "nombre TEXT, apellido TEXT,email TEXT, password TEXT,imagen BLOB)"
 
         db!!.execSQL(ordenCreacion)
     }
@@ -23,7 +23,7 @@ class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados", nul
 //                    "(id LONG PRIMARY KEY AUTOINCREMENT," +
 //                    "nombre TEXT,apellido TEXT,email TEXT,password TEXT)"
             //Le indicamos que ejecute la orden sql->creacion
-            //!!-no va a ser null, ejecuta la creacion ,reppass TEXT
+            //!!-no va a ser null, ejecuta la creacion ,reppass TEXT,photoPath TEXT
 
 
     //Si detecta que el numero de version actual (oldversion), es > al que se encuentra (newversion), y hay que actualizar
@@ -42,81 +42,4 @@ class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados", nul
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//    fun consultarEmail(email: String?): Cursor? {
-//
-//        // Abre la base de datos en modo lectura
-//        val db = this.readableDatabase
-//
-//        val selection = "email = ?"
-//        val selectionArgs = arrayOf(email)
-//
-//        // Realiza la consulta
-//        return db.query(
-//            "registrados",
-//            null, // Consulta todas las columnas
-//            selection, // WHERE "email" = ?
-//            selectionArgs, // Valores para el WHERE
-//            null,
-//            null,
-//            null
-//        )
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//    fun obtenerDatosUsuarioPorEmail(email: String): Cursor? {
-//        val db = this.readableDatabase
-//        val cursor = db.query(
-//            "registrados",
-//            arrayOf("nombre", "apellido", "email", "password"),
-//            "email = ?",
-//            arrayOf(email),
-//            null,
-//            null,
-//            null
-//        )
-//
-//        return cursor
-//    }
-//
-
-
-
-
-
-
 

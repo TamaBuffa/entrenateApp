@@ -275,7 +275,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Email"
+                    android:text="Fecha de nacimiento"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -317,7 +317,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Email"
+                    android:text="Peso"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -359,7 +359,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Email"
+                    android:text="Altura"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />

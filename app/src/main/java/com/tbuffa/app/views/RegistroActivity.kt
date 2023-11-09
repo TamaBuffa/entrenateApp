@@ -18,7 +18,9 @@ class RegistroActivity : AppCompatActivity(){
         binding = RegistroActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         userRepository = UsuarioRepository()
+
         binding.btnRegistrarme.setOnClickListener {
+
             guardarUsuario()
         }
 
@@ -31,10 +33,9 @@ class RegistroActivity : AppCompatActivity(){
 
             val intent = Intent(this, InicioActivity::class.java)
             intent.putExtra(Constants.USER_EMAIL, usuario.email)
-//            intent.putExtra(Constants.USER_NOMBRE, usuario.nombre)
-//            intent.putExtra(Constants.USER_ID, usuario.id)
-
+            intent.putExtra(Constants.USER_ID, usuario.id)
             startActivity(intent)
+
             Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "No se ha podido guardar", Toast.LENGTH_LONG).show()
@@ -44,7 +45,7 @@ class RegistroActivity : AppCompatActivity(){
     private fun getUser(): Usuario {
         return Usuario(-1, binding.etNombre.text.toString(), binding.etApellido.text.toString(),
             binding.etEmail.text.toString(),binding.etPassw.text.toString())
-//            ,binding.etRepPassw.text.toString())
+//            ,binding.etRepPassw.text.toString()),""
     }
 
     private fun validateUser(): Boolean {

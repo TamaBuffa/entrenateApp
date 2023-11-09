@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">Entrenate</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="elevaciones_laterales">
 
@@ -10,5 +12,5 @@
         \n\nVuelve a la posición original y realiza la siguiente repetición.
          \n\nEste ejercicio sirve para entrenar todo el cuerpo y trabaja todos los grandes grupos musculares.
     </string>
-    
+
 </resources>

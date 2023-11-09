@@ -14,7 +14,7 @@ class UsuarioRepository {
         datos.put ("apellido",usuario.apellido)
         datos.put ("email",usuario.email)
         datos.put ("password",usuario.password)
-//        datos.put("reppass",usuario.reppass)
+
 
         val db = DbHelper(context).getWrittingDataBase()
         val id = db.insert("registrados", null, datos)
@@ -49,6 +49,10 @@ class UsuarioRepository {
 
         return user
     }
+
+//            cursor.getString(cursor.getColumnIndexOrThrow("reppass"))
+//        cursor.getString(cursor.getColumnIndexOrThrow("photoPath"))
+
 
 
     fun getPorEmail(email: String, context: Context): List<Usuario> {

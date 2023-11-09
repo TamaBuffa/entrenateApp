@@ -3,6 +3,7 @@ package com.tbuffa.app.views
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -18,6 +19,7 @@ import com.tbuffa.app.model.Constants
 import com.tbuffa.app.model.Usuario
 import com.tbuffa.app.repository.DbHelper
 import com.tbuffa.app.repository.UsuarioRepository
+import java.io.ByteArrayOutputStream
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -34,7 +36,6 @@ class PerfilActivity : AppCompatActivity() {
 
             val email = intent.getStringExtra(Constants.USER_EMAIL)
 
-
             if (email != null) {
             Log.d("InicioActivity", "Valor de email: $email")
                 val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
@@ -44,6 +45,7 @@ class PerfilActivity : AppCompatActivity() {
                    binding.tvNombrePerfil.text= usuario.nombre
                     binding.tvApellidoPerfil.text=usuario.apellido
                     binding.tvEmailPerfil.text=usuario.email
+//                    cargarFotoDelUsuario(usuario)
                 }
             }
 
@@ -53,9 +55,6 @@ class PerfilActivity : AppCompatActivity() {
             }
         }
 
-
-
-
             private val startForResult= registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             {
                     result: ActivityResult ->
@@ -63,10 +62,38 @@ class PerfilActivity : AppCompatActivity() {
                 if (result.resultCode == Activity.RESULT_OK) {
                     val intent = result.data
                     val imageBitmap = intent?.extras?.get("data") as Bitmap
+//                    val byteArrayOutputStream = ByteArrayOutputStream()
+//                    imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+//                    val byteArray = byteArrayOutputStream.toByteArray()
+//                    // Llama a la función guardar con el usuario y el arreglo de bytes
+//                    usuario = userRepository.guardar(usuario, byteArray, this)
                     binding.ivCamara.setImageBitmap(imageBitmap)
+
+
+
+
                 }
 
             }
+
+
+
+
+
+
+
+
+
+
+
+
+//            private fun cargarFotoDelUsuario(usuario: Usuario) {
+//                val imageFilePath = usuario.photoPath // Supongamos que la ruta se guarda en la propiedad "photoPath" del objeto Usuario
+//
+//                val bitmap = BitmapFactory.decodeFile(imageFilePath)
+//                binding.ivCamara.setImageBitmap(bitmap)
+//            }
+
 
         }
 

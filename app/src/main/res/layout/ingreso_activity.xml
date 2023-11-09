@@ -1,94 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.IngresoActivity"
-    android:background="@color/color_black">
+    tools:context=".views.IngresoActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/portada"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#86000000"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
             android:fontFamily="@font/designer"
+            android:layout_marginLeft="10dp"
             android:text="ENTRENATE"
             android:textColor="@color/color_yellow"
-            android:textSize="50sp" />
+            android:textSize="30sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/designer"
-            android:text="Ingresar"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/the_bold_font"
-            android:text="Ingresa tu correo y contraseña"
-            android:textColor="#BAFFFFFF"
-            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etCorreo"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Correo electronico"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="40dp"
-            android:padding="15dp"
-            android:inputType="textEmailAddress"
-            android:textSize="15sp"
-            android:background="@drawable/edittext_custom"/>
+            android:layout_height="wrap_content"
+            android:hint="Correo electrónico"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/input"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:inputType="textEmailAddress"/>
 
-        <EditText
+        ><EditText
             android:id="@+id/etPassw"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:hint="Contraseña"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="35dp"
-            android:padding="15dp"
-            android:inputType="textPassword"
-            android:textSize="15sp"
-            android:background="@drawable/edittext_custom"/>
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/input"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:inputType="textPassword"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="bottom"
-        android:gravity="center_horizontal">
-
-        <Button
+        ><Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="@color/btn_color"
-            android:text="Iniciar sesión"
-            android:textColor="@color/color_black" />
+            android:elevation="5dp"
+            android:text="INICIAR SESIÓN"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvIrRegistrarse"
@@ -101,6 +91,127 @@
 
 
     </LinearLayout>
+</RelativeLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".views.IngresoActivity"-->
+<!--    android:background="@color/color_black">-->
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:fontFamily="@font/designer"-->
+<!--            android:text="ENTRENATE"-->
+<!--            android:textColor="@color/color_yellow"-->
+<!--            android:textSize="50sp" />-->
+
+
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:fontFamily="@font/the_bold_font"-->
+<!--            android:text="Ingresa tu correo y contraseña"-->
+<!--            android:textColor="#BAFFFFFF"-->
+<!--            android:textSize="15sp" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etCorreo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:hint="Correo electronico"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginRight="25dp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:padding="15dp"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:textSize="15sp"-->
+<!--            android:background="@drawable/edittext_custom"/>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etPassw"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:hint="Contraseña"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginRight="25dp"-->
+<!--            android:layout_marginTop="35dp"-->
+<!--            android:padding="15dp"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:textSize="15sp"-->
+<!--            android:background="@drawable/edittext_custom"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:gravity="center_horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnLogin"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginRight="25dp"-->
+<!--            android:background="@drawable/rounded_button"-->
+<!--            android:backgroundTint="@color/btn_color"-->
+<!--            android:text="Iniciar sesión"-->
+<!--            android:textColor="@color/color_black" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvIrRegistrarse"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="¿No tienes una cuenta?"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginBottom="20dp"/>-->
+
+
+<!--    </LinearLayout>-->
+
+
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

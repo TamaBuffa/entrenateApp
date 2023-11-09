@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/nav_perfil"
+            android:title="Mi Perfil" />
+        <item
+            android:id="@+id/nav_entrenamientos"
+            android:title="Entrenamientos"/>
+        <item
+            android:id="@+id/nav_turnos"
+            android:title="Turnos"/>
+        ><item
+            android:id="@+id/nav_historialTurnos"
+            android:title="Historial de Turnos"/>
+
+    </menu>
+

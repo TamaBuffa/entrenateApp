@@ -4,17 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Toast
-import com.tbuffa.app.databinding.ActivityEntrenaBrazosElevacioneslateralesBinding
+import com.tbuffa.app.databinding.ActivityEntrenaBrazosEjer1Binding
+
 
 class TemporizadorActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityEntrenaBrazosElevacioneslateralesBinding
+    lateinit var binding: ActivityEntrenaBrazosEjer1Binding
     private lateinit var countDownTimer: CountDownTimer
     private var isTimerRunning = false
     private var timeRemaining: Long = 30000 // 30 segundos
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEntrenaBrazosElevacioneslateralesBinding.inflate(layoutInflater)
+        binding = ActivityEntrenaBrazosEjer1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
