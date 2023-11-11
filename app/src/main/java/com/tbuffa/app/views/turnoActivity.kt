@@ -117,10 +117,9 @@ class turnoActivity : AppCompatActivity() {
 
         binding.btnConfirmar.setOnClickListener {
             // Obtener el entrenador y horario seleccionados para la confirmación
-            var entrenadorSeleccionado = binding.spEntrenDisp.selectedItem.toString()
-            var horarioEntrenadorSeleccionado = binding.spHorariDisp.selectedItem.toString()
-            var tipoEntrenamientoSeleccionado=binding.spEntrenamiento.selectedItem.toString()
-
+            val entrenadorSeleccionado = binding.spEntrenDisp.selectedItem.toString()
+            val horarioEntrenadorSeleccionado = binding.spHorariDisp.selectedItem.toString()
+            val tipoEntrenamientoSeleccionado=binding.spEntrenamiento.selectedItem.toString()
 //            var usuario = getUser()
 //            turnoRepository.guardarTurno(usuario , this)
 

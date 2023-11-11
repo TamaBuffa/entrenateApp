@@ -44,7 +44,7 @@ class RegistroActivity : AppCompatActivity(){
 
     private fun getUser(): Usuario {
         return Usuario(-1, binding.etNombre.text.toString(), binding.etApellido.text.toString(),
-            binding.etEmail.text.toString(),binding.etPassw.text.toString())
+            binding.etEmail.text.toString(),binding.etPassw.text.toString(),null)
 //            ,binding.etRepPassw.text.toString()),""
     }
 

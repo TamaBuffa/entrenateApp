@@ -14,8 +14,7 @@ class UsuarioRepository {
         datos.put ("apellido",usuario.apellido)
         datos.put ("email",usuario.email)
         datos.put ("password",usuario.password)
-
-
+        datos.put("rutaFoto", usuario.rutaFoto) // Guarda la ruta de la foto
         val db = DbHelper(context).getWrittingDataBase()
         val id = db.insert("registrados", null, datos)
         usuario.id = id
@@ -43,9 +42,10 @@ class UsuarioRepository {
             cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
             cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
             cursor.getString(cursor.getColumnIndexOrThrow("email")),
-            cursor.getString(cursor.getColumnIndexOrThrow("password")))
+            cursor.getString(cursor.getColumnIndexOrThrow("password")),
+            cursor.getString(cursor.getColumnIndexOrThrow("rutaFoto")) // Obtiene la ruta de la foto desde la base de datos
 //            cursor.getString(cursor.getColumnIndexOrThrow("reppass"))
-
+        )
 
         return user
     }

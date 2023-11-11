@@ -2,9 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.camera"-->
+<!--        android:required="true">-->
+
+<!--    </uses-feature>-->
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         tools:targetApi="31">
+
         <activity
             android:name=".views.TurnosHistorial"
             android:exported="false" />
@@ -24,15 +32,6 @@
             android:exported="false" />
         <activity
             android:name=".views.TemporizadorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".grillaEntrenaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EntrenaFuerzaEje5Activity"
-            android:exported="false" />
-        <activity
-            android:name=".EntrenaFuerzaEje4Activity"
             android:exported="false" />
         <activity
             android:name=".views.EntrenaPiernasActivity"
@@ -52,23 +51,9 @@
         <activity
             android:name=".views.InicioActivity"
             android:exported="false" />
-        <activity
-            android:name=".inicioctivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.InicioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ingreso"
-            android:exported="false" />
-        <activity
-            android:name=".principalActivity"
-            android:exported="false" />
+
         <activity
             android:name=".views.IngresoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MenuActivity"
             android:exported="false" />
         <activity
             android:name=".views.RegistroActivity"
@@ -78,6 +63,7 @@
             android:name=".views.MainActivity"
             android:exported="true"
             android:launchMode="singleInstance">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -20,63 +20,135 @@ import com.tbuffa.app.model.Usuario
 import com.tbuffa.app.repository.DbHelper
 import com.tbuffa.app.repository.UsuarioRepository
 import java.io.ByteArrayOutputStream
+import java.io.File
 
 class PerfilActivity : AppCompatActivity() {
 
-        lateinit var binding: ActivityPerfilBinding
-        private lateinit var userRepository: UsuarioRepository
-        private var usuario: Usuario? = null
+    lateinit var binding: ActivityPerfilBinding
+    private lateinit var userRepository: UsuarioRepository
+    private var usuario: Usuario? = null
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            binding = ActivityPerfilBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityPerfilBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            userRepository = UsuarioRepository()
+        userRepository = UsuarioRepository()
 
-            val email = intent.getStringExtra(Constants.USER_EMAIL)
+        val email = intent.getStringExtra(Constants.USER_EMAIL)
 
-            if (email != null) {
-            Log.d("InicioActivity", "Valor de email: $email")
-                val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
-            Log.d("InicioActivity", "Cantidad de usuarios encontrados: ${usuariosEncontrados.size}")
+        if (email != null) {
+            val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
+            if (usuariosEncontrados.isNotEmpty()) {
+                usuario = usuariosEncontrados[0]
+            }
+            for (usuario in usuariosEncontrados) {
+                Log.d(
+                    "InicioActivity",
+                    "Cantidad de usuarios encontrados: ${usuariosEncontrados.size}"
+                )
+                Log.d("InicioActivity", "Valor de foto: ${usuario.rutaFoto}")
 
-                for (usuario in usuariosEncontrados) {
-                   binding.tvNombrePerfil.text= usuario.nombre
-                    binding.tvApellidoPerfil.text=usuario.apellido
-                    binding.tvEmailPerfil.text=usuario.email
-//                    cargarFotoDelUsuario(usuario)
+                binding.tvNombrePerfil.text = usuario.nombre
+                binding.tvApellidoPerfil.text = usuario.apellido
+                binding.tvEmailPerfil.text = usuario.email
+                binding.tvRutaFoto.text = usuario.rutaFoto
+
+
+
+            // Cargar la imagen del usuario si está disponible
+
+                if (usuario?.rutaFoto != null) {
+                    val fileName = usuario?.rutaFoto
+                    val file = File(filesDir, fileName)
+                    if (file.exists()) {
+                        val imageBitmap = BitmapFactory.decodeFile(file.absolutePath)
+                        binding.ivCamara.setImageBitmap(imageBitmap)
+                    }
                 }
-            }
-
-            binding.tvCamara.setOnClickListener() {
-                startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
-
-            }
+        }
         }
 
-            private val startForResult= registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            {
-                    result: ActivityResult ->
 
-                if (result.resultCode == Activity.RESULT_OK) {
-                    val intent = result.data
-                    val imageBitmap = intent?.extras?.get("data") as Bitmap
+        binding.tvCamara.setOnClickListener {
+            startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
+        }
+    }
+
+    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+            val imageBitmap = intent?.extras?.get("data") as Bitmap
+            binding.ivCamara.setImageBitmap(imageBitmap)
+
+            // Guardar la imagen en almacenamiento interno
+            val fileName = usuario?.email?.let { "profile_image_$it.jpg" } ?: "default_filename.jpg"
+            val file = File(filesDir, fileName)
+            file.createNewFile()
+            file.outputStream().use {
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+            }
+//            Log.d("Guardado", "Ruta de la foto guardada: ${file.absolutePath}")
+            // Asociar la imagen al usuario
+            usuario!!.rutaFoto = fileName
+            usuario.let { userRepository.guardar(usuario!!, this) }
+
+        }
+    }
+}
+
+
+
+
 //                    val byteArrayOutputStream = ByteArrayOutputStream()
 //                    imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
 //                    val byteArray = byteArrayOutputStream.toByteArray()
 //                    // Llama a la función guardar con el usuario y el arreglo de bytes
 //                    usuario = userRepository.guardar(usuario, byteArray, this)
-                    binding.ivCamara.setImageBitmap(imageBitmap)
 
 
 
 
-                }
-
-            }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//            binding.tvCamara.setOnClickListener() {
+//                startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
+//
+//            }
+//        }
+//
+//            private val startForResult= registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+//            {
+//                    result: ActivityResult ->
+//
+//                if (result.resultCode == Activity.RESULT_OK) {
+//                    val intent = result.data
+//                    val imageBitmap = intent?.extras?.get("data") as Bitmap
+//                    binding.ivCamara.setImageBitmap(imageBitmap)
+//                }
+//
+//            }
+
+
+
+//                    val byteArrayOutputStream = ByteArrayOutputStream()
+//                    imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+//                    val byteArray = byteArrayOutputStream.toByteArray()
+//                    // Llama a la función guardar con el usuario y el arreglo de bytes
+//                    usuario = userRepository.guardar(usuario, byteArray, this)
 
 
 
@@ -95,7 +167,6 @@ class PerfilActivity : AppCompatActivity() {
 //            }
 
 
-        }
 
 
 

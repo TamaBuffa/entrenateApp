@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados", null, 1)
+class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados", null, 2)
 {
 
     //Cuando la bbdd no exista, y haya que crearla por primera vez+
@@ -14,7 +14,7 @@ class DbHelper (context: Context) : SQLiteOpenHelper(context, "registrados", nul
     override fun onCreate(db:SQLiteDatabase?) {
         val ordenCreacion = "CREATE TABLE registrados " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "nombre TEXT, apellido TEXT,email TEXT, password TEXT,imagen BLOB)"
+                "nombre TEXT, apellido TEXT,email TEXT, password TEXT, rutaFoto TEXT)"
 
         db!!.execSQL(ordenCreacion)
     }
