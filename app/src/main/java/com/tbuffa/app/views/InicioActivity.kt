@@ -2,10 +2,11 @@ package com.tbuffa.app.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.tbuffa.app.databinding.ActivityTurnosHistorialBinding
+import com.tbuffa.app.databinding.ActivityMainBinding
 import com.tbuffa.app.databinding.InicioActivityBinding
 import com.tbuffa.app.model.Constants
 import com.tbuffa.app.model.Usuario
+import com.tbuffa.app.repository.TurnoRepository
 import com.tbuffa.app.repository.UsuarioRepository
 
 class InicioActivity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class InicioActivity : AppCompatActivity() {
     lateinit var binding: InicioActivityBinding
     private lateinit var userRepository: UsuarioRepository
     private var usuario: Usuario? = null
+    private lateinit var turnoRepository: TurnoRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +22,9 @@ class InicioActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         userRepository = UsuarioRepository()
-
+        turnoRepository=TurnoRepository()
 
         var email=intent.getStringExtra(Constants.USER_EMAIL)
-        var userId=intent.getLongExtra(Constants.USER_ID,0)
 
         if (email != null) {
             val usuariosEncontrados: List<Usuario> = userRepository.getPorEmail(email, this)
@@ -39,9 +40,8 @@ class InicioActivity : AppCompatActivity() {
         }
 
         binding.ivTurno.setOnClickListener() {
-            val intent = Intent(this, turnoActivity::class.java)
+            val intent= Intent(this,TurnoActivity::class.java)
             intent.putExtra(Constants.USER_EMAIL, email)
-            intent.putExtra(Constants.USER_ID, userId)
             startActivity(intent)
         }
 
@@ -50,9 +50,14 @@ class InicioActivity : AppCompatActivity() {
         }
 
 
-        binding.ivHistorialTurnos.setOnClickListener(){
-            val intent = Intent(this,ActivityTurnosHistorialBinding::class.java)
+        binding.ivHistorialTurnos.setOnClickListener {
+            val intent = Intent(this,HistorialTurnosActivity::class.java)
             intent.putExtra(Constants.USER_EMAIL, email)
+            startActivity(intent)
+        }
+
+        binding.ibcerrarSesion.setOnClickListener{
+            val intent = Intent(this,IngresoActivity::class.java)
             startActivity(intent)
         }
     }

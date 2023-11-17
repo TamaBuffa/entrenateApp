@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".views.TemporizadorActivity">
+    tools:context=".brazos_ejerc.brazosEjerc2Activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +19,7 @@
             <pl.droidsonroids.gif.GifImageView
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:src="@drawable/elevaciones_laterales" />
+                android:src="@drawable/flexiones_diamante" />
 
             <Button
                 android:id="@+id/btntiempo"
@@ -30,7 +29,7 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="119dp"
                 android:padding="15dp"
-                android:text="00:30"
+                android:text="00:20"
                 android:textSize="28sp" />
 
             <Button
@@ -45,16 +44,16 @@
                 android:textStyle="bold"
                 android:textSize="28sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="5dp"
-            android:text="Saltos de Tijera 30s"
-            android:textSize="20sp"
-            android:padding="7dp"
-            android:textStyle="bold"/>
-            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="5dp"
+                android:text="Flexiones en diamante 20s"
+                android:textSize="20sp"
+                android:padding="7dp"
+                android:textStyle="bold"/>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -74,7 +73,7 @@
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="@string/elevaciones_laterales"
+                        android:text="@string/flexiones_diamante"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -100,7 +99,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:src="@drawable/saltos_tijera_musculos"/>
+                        android:src="@drawable/flexiones_diamante_musculo"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -111,3 +110,7 @@
     </ScrollView>
 
 </RelativeLayout>
+
+
+
+

@@ -76,6 +76,24 @@ class UsuarioRepository {
         return users
     }
 
+
+    fun getUsuarioByEmailPassword(email: String, password: String, context: Context): Usuario? {
+        val db = DbHelper(context).getReadableDatabase()
+        val query = "SELECT * FROM registrados WHERE email = ? AND password = ?"
+        val args = arrayOf(email, password)
+
+        val cursor = db.rawQuery(query, args)
+
+        return if (cursor.moveToFirst()) {
+            getUser(cursor)
+        } else {
+            null
+        }
+    }
+
+
+
+
 }
 
 

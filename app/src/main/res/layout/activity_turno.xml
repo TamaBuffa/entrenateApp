@@ -5,12 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.turnoActivity">
+    tools:context=".views.TurnoActivity">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/black"
+            android:textAlignment="textEnd"
+            app:title="RESERVA DE TURNOS"
+            app:titleTextColor="@color/white"
+            android:textStyle="bold"
+            android:gravity="end"/>
 
     <LinearLayout
         android:id="@+id/turnoMain"
@@ -21,126 +32,8 @@
         android:gravity="bottom"
         android:padding="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reserva de turnos"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:gravity="center"
-            android:fontFamily="@font/designer"
-            android:layout_marginBottom="2dp"/>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvConsulta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            android:elevation="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp"
-            app:contentPadding="12dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textStyle="italic|bold"
-                android:textSize="18sp"
-                android:text="CLASE ESPONTÁNEA"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tipo de entrenamiento"
-                android:layout_marginTop="15dp"/>
-
-            <Spinner
-                android:id="@+id/spEntrenamiento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nivel"
-                android:layout_marginTop="25dp"/>
-
-                <RadioGroup
-                    android:id="@+id/radioGroupNivel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <RadioButton
-                        android:id="@+id/radioInicial"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="12sp"
-                        android:text="Inicial" />
-
-                    <RadioButton
-                        android:id="@+id/radioIntermedio"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="12sp"
-                        android:text="Intermedio" />
-
-                    <RadioButton
-                        android:id="@+id/radioAvanzado"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="12sp"
-                        android:text="Avanzado" />
-
-                </RadioGroup>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Horario"
-                    android:layout_marginTop="35dp"/>
-
-                <Spinner
-                    android:id="@+id/spHorarDisp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"/>
-
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/btnConsulta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Consultar disponibilidad"
-            android:textColor="@color/black"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="20dp"
-            android:elevation="5dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="@drawable/rounded_button"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -148,106 +41,332 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvConfirmar"
+                android:id="@+id/cvConsulta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:cardCornerRadius="10dp"
-                android:elevation="8dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="25dp"
-                android:layout_marginLeft="25dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="10dp"
                 app:contentPadding="12dp">
-
-
-                <androidx.core.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textStyle="italic|bold"
+                        android:text="CLASE ESPONTÁNEA"
                         android:textSize="18sp"
-                        android:text="CLASE ESPONTÁNEA"/>
+                        android:textStyle="italic|bold" />
+
+                    <TextView
+                        android:id="@+id/tvfecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ENTRENADORES DISPONIBLES"
-                        android:textStyle="bold|italic"
-                        android:layout_marginTop="35dp"/>
+                        android:layout_marginTop="15dp"
+                        android:text="Tipo de entrenamiento" />
+
 
                     <Spinner
-                        android:id="@+id/spEntrenDisp"
+                        android:id="@+id/spTipoEntrenamiento"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"/>
+                        android:layout_marginTop="15dp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Horarios"
-                        android:textStyle="bold|italic"
-                        android:layout_marginTop="35dp"/>
+                        android:layout_marginTop="25dp"
+                        android:text="Nivel" />
 
-                    <Spinner
-                        android:id="@+id/spHorariDisp"
+                    <RadioGroup
+                        android:id="@+id/radioGroupNivel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"/>
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/radioInicial"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Inicial"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/radioIntermedio"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Intermedio"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/radioAvanzado"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Avanzado"
+                            android:textSize="12sp" />
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="35dp"
+                        android:text="Horario" />
+
+                    <Spinner
+                        android:id="@+id/spHorarDisp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnConsulta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_button"
+                android:elevation="5dp"
+                android:text="Consultar disponibilidad"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvConfirmar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="25dp"
+                    android:elevation="8dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:contentPadding="12dp">
+
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="CLASE ESPONTÁNEA"
+                                android:textSize="18sp"
+                                android:textStyle="italic|bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="35dp"
+                                android:text="ENTRENADORES DISPONIBLES"
+                                android:textStyle="bold|italic" />
+
+                            <Spinner
+                                android:id="@+id/spEntrenDisp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="35dp"
+                                android:text="Horarios"
+                                android:textStyle="bold|italic" />
+
+                            <Spinner
+                                android:id="@+id/spHorariDisp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp" />
+
+
+                        </LinearLayout>
+
+
+                    </androidx.core.widget.NestedScrollView>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnConfirmar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/rounded_button"
+                        android:elevation="5dp"
+                        android:text="Confirmar"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/btnVolveraConsultar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/rounded_button"
+                        android:elevation="5dp"
+                        android:text="Volver a consultar"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/reservaTurnos"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="25dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="25dp"
+                    android:elevation="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:contentPadding="12dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TURNO RESERVADO"
+                            android:textSize="20sp"
+                            android:textStyle="italic|bold" />
+
+
+                        <TextView
+                            android:id="@+id/tvFechaTurno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="12sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvHoraTurno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvTipEntrenamTurno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvNivelTurno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvEntrenadorTurno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/telefonoEntrenadorTurno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/ivWhsp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="15dp"
+                            android:visibility="gone"
+                            android:clickable="true"
+                            android:onClick="openWhatsApp"
+                            android:src="@drawable/whsp"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnIrHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="80dp"
+                        android:background="@drawable/rounded_button"
+                        android:elevation="5dp"
+                        android:text="Home"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
 
-
-                </androidx.core.widget.NestedScrollView>
-
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnConfirmar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:text="Confirmar"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="50dp"
-                    android:elevation="5dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/rounded_button"/>
-
-                <Button
-                    android:id="@+id/btnVolveraConsultar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:text="Volver a consultar"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
-                    android:elevation="5dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/rounded_button"/>
             </LinearLayout>
 
-</LinearLayout>
-
-
-</LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
+
+

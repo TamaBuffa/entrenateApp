@@ -66,7 +66,7 @@ class PerfilActivity : AppCompatActivity() {
                         binding.ivCamara.setImageBitmap(imageBitmap)
                     }
                 }
-        }
+            }
         }
 
 

@@ -138,7 +138,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5.0dp"
-                            android:text="x6"
+                            android:text="00:20"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/color_gray_light"/>
@@ -215,7 +215,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5.0dp"
-                            android:text="x10"
+                            android:text="00:10"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/color_gray_light"/>
@@ -321,7 +321,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnPuñetazos"
+                    android:id="@+id/btnPunetazos"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10.0dp"
@@ -367,7 +367,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5.0dp"
-                            android:text="x20"
+                            android:text="00:20"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/color_gray_light"/>

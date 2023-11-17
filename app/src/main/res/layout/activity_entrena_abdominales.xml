@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5.0dp"
-                            android:text="x16"
+                            android:text="00:20"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/color_gray_light"/>
@@ -163,7 +163,7 @@
                         <pl.droidsonroids.gif.GifImageView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/escalada_montana"/>
+                            android:src="@drawable/escalada_montana" />
 
                     </LinearLayout>
 
@@ -216,7 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5.0dp"
-                            android:text="x16"
+                            android:text="00:20"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/color_gray_light"/>
@@ -292,7 +292,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5.0dp"
-                            android:text="x16"
+                            android:text="00:15"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/color_gray_light"/>
@@ -369,7 +369,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5.0dp"
-                            android:text="x20"
+                            android:text="00:10"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/color_gray_light"/>

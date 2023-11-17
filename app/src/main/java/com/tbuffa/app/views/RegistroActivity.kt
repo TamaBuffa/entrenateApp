@@ -22,7 +22,20 @@ class RegistroActivity : AppCompatActivity(){
         binding.btnRegistrarme.setOnClickListener {
 
             guardarUsuario()
+            binding.etNombre.text.clear()
+            binding.etApellido.text.clear()
+            binding.etEmail.text.clear()
+            binding.etPassw.text.clear()
+            binding.etRepPassw.text.clear()
+
         }
+
+
+        binding.tvIrIngreso.setOnClickListener{
+            val intent = Intent(this, IngresoActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
@@ -49,15 +62,63 @@ class RegistroActivity : AppCompatActivity(){
     }
 
     private fun validateUser(): Boolean {
-        return binding.etNombre.text.isNotBlank() && binding.etApellido.text.isNotBlank() &&
-                binding.etEmail.text.isNotBlank() && binding.etPassw.text.isNotBlank()
-//                && binding.etRepPassw.text.isNotBlank()
+        val nombre = binding.etNombre.text.toString()
+        val apellido = binding.etApellido.text.toString()
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassw.text.toString()
+        val reppass = binding.etRepPassw.text.toString()
+
+        if (nombre.isNotBlank() && apellido.isNotBlank() &&
+            email.isNotBlank() && password.isNotBlank()
+            && reppass.isNotBlank()) {
+
+            if (!isValidEmail(email)) {
+                Toast.makeText(this, "Ingresa un correo electrónico válido", Toast.LENGTH_SHORT)
+                    .show()
+                return false
+            }
+            if (!isValidPassword(password)) {
+                Toast.makeText(
+                    this,
+                    "La contraseña debe tener al menos 8 caracteres y al menos un número",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return false
+            }
+
+            val existingUser = userRepository.getPorEmail(email, this)
+            if (existingUser.isNotEmpty()) {
+                // El correo electrónico ya está registrado
+                Toast.makeText(this, "El correo electrónico ya está registrado", Toast.LENGTH_SHORT).show()
+
+                return false
+            }
+
+            // Si todo está bien, se puede proceder con el registro
+            val usuario = Usuario(-1, nombre, apellido, email, password, null)
+            userRepository.guardar(usuario, this)
+            Toast.makeText(this, "Te pudiste registrar ok", Toast.LENGTH_SHORT).show()
+            return true
+        } else {
+            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+            return false
+        }
     }
+
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        // Verificar que la contraseña tenga al menos 8 caracteres y al menos un número
+        return password.length >= 8 && password.any { it.isDigit() }
+    }
+
 }
 
 
 
-    //val intent = Intent(this, InicioActivity::class.java)
+//val intent = Intent(this, InicioActivity::class.java)
 //////         intent.putExtra("nombreUsuario", binding.etNombre.text.toString())
 //            intent.putExtra("emailUsuario", binding.etEmail.text.toString())
 //            startActivity(intent)

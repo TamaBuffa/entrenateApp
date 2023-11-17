@@ -3,34 +3,38 @@ package com.tbuffa.app.repository
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import android.util.Log
 import com.tbuffa.app.model.Usuario
 import com.tbuffa.app.model.turno
 
 class TurnoRepository {
 
-    fun guardarTurno(turno: turno, context: Context): turno {
-        val datos = ContentValues()
-        datos.put("idusuario",turno.emailUsuario)
-        datos.put("tipoEntrenamiento", turno.tipoEntrenamiento)
-        datos.put("entrenador", turno.entrenador)
-        datos.put("hora_cita", turno.hora_cita)
+fun guardar(turno: turno,context: Context):turno{
+    val datos = ContentValues()
+    datos.put("emailUsuario", turno.emailUsuario)
+    datos.put("tipoEntrenamiento", turno.tipoEntrenamiento)
+    datos.put("entrenador", turno.entrenador)
+    datos.put("dia_cita", turno.dia_cita)
+    datos.put("hora_cita", turno.hora_cita)
+    val db = TurnoDatabaseHelper(context).getWrittingDataBase()
+    val id = db.insert("turnos", null, datos)
+    turno.id = id
+    db.close()
+//    Log.d("TurnoRepository", "Turno guardado: $turno")
+    return turno
 
-        val db = TurnoDatabaseHelper(context).getWrittingDataBase()
-        val id = db.insert("turnos", null, datos)
-        turno.id=id
-        db.close()
-        return turno
+}
 
 
-    }
-
-    private fun getUser(cursor: Cursor): turno? {
+private fun getUser(cursor: Cursor): turno? {
         var user = turno(
-            cursor.getLong(cursor.getColumnIndexOrThrow("id")),
-            cursor.getLong(cursor.getColumnIndexOrThrow("emailUsuario")),
-            cursor.getString(cursor.getColumnIndexOrThrow("tipoEntrenamiento")),
-            cursor.getString(cursor.getColumnIndexOrThrow("entrenador")),
-            cursor.getString(cursor.getColumnIndexOrThrow("dia_cita")),)
+        cursor.getLong(cursor.getColumnIndexOrThrow("id")),
+        cursor.getString(cursor.getColumnIndexOrThrow("emailUsuario")),
+        cursor.getString(cursor.getColumnIndexOrThrow("tipoEntrenamiento")),
+        cursor.getString(cursor.getColumnIndexOrThrow("entrenador")),
+        cursor.getString(cursor.getColumnIndexOrThrow("dia_cita")),
+        cursor.getString(cursor.getColumnIndexOrThrow("hora_cita"))
+            ,)
 
         return user
     }
@@ -63,14 +67,31 @@ class TurnoRepository {
 
     fun getPorEmail(email: String, context: Context): List<turno> {
         val db = TurnoDatabaseHelper(context).getReadableDataBase()
-        val query = "SELECT * FROM turnos WHERE email = ?"
+        val query = "SELECT * FROM turnos WHERE emailUsuario = ?"
         var args = arrayOf(email.toString())
         val cursor = db.rawQuery(query, args)
         val users = getUsers(cursor)
         cursor.close()
         db.close()
+
+        for (turno in users) {
+            Log.d("TurnoData", "ID: ${turno.id}, Email: ${turno.emailUsuario}, Entrenador: ${turno.entrenador}")
+            // Agrega más campos según los datos que quieras imprimir
+        }
+
         return users
     }
+
+
+//    fun getPorEmail(email: String, context: Context): List<turno> {
+//        val db = TurnoDatabaseHelper(context).getReadableDataBase()
+//        val query = "SELECT * FROM turnos WHERE emailUsuario = ?"
+//        val cursor = db.rawQuery(query, arrayOf(email))
+//        val users = getUsers(cursor)
+//        cursor.close()
+//        db.close()
+//        return users
+//    }
 
 
 }

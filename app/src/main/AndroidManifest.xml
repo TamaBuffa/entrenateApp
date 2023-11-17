@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-<!--    <uses-feature-->
-<!--        android:name="android.hardware.camera"-->
-<!--        android:required="true">-->
-
-<!--    </uses-feature>-->
-
+    <!-- <uses-feature -->
+    <!-- android:name="android.hardware.camera" -->
+    <!-- android:required="true"> -->
+    <!-- </uses-feature> -->
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -22,13 +21,62 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         tools:targetApi="31">
-
         <activity
-            android:name=".views.TurnosHistorial"
+            android:name=".piernas_ejerc.PiernasEjerc5Activity"
             android:exported="false" />
-        <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
         <activity
-            android:name=".views.turnoActivity"
+            android:name=".piernas_ejerc.PiernasEjerc4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".piernas_ejerc.PiernasEjerc3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".piernas_ejerc.PiernasEjerc2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".piernas_ejerc.PiernasEjerc1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".abdominales_ejerc.AbdominalesEjerc5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".abdominales_ejerc.AbdominalesEjerc4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".abdominales_ejerc.AbdominalesEjerc3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".abdominales_ejerc.AbdominalesEjerc2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".abdominales_ejerc.AbdominalesEjerc1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".brazos_ejerc.BrazosEjerc5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".brazos_ejerc.BrazosEjerc4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".brazos_ejerc.BrazosEjerc3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".brazos_ejerc.brazosEjerc2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".brazos_ejerc.BrazosEjerc1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activity_entrena_brazos_ejer1"
+            android:exported="false" />
+        <activity
+            android:name=".views.HistorialTurnosActivity"
+            android:exported="false" /> <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
+        <activity
+            android:name=".views.TurnosHistorialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.TurnoActivity"
             android:exported="false" />
         <activity
             android:name=".views.TemporizadorActivity"
@@ -51,7 +99,6 @@
         <activity
             android:name=".views.InicioActivity"
             android:exported="false" />
-
         <activity
             android:name=".views.IngresoActivity"
             android:exported="false" />
@@ -63,7 +110,6 @@
             android:name=".views.MainActivity"
             android:exported="true"
             android:launchMode="singleInstance">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -23,35 +23,8 @@ class EntrenaActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.ivPiernas.setOnClickListener(){
-            val intent = Intent(this, EntrenaPiernasActivity::class.java)
-            startActivity(intent)
-        }
 
 
-
-
-
-//        binding.btnEjercicioFuerza1.setOnClickListener() {
-//            val intent = Intent(this, EntrenaFuerzaEje1Activity::class.java)
-//            startActivity(intent)
-//        }
-//        binding.btnEjercicioFuerza2.setOnClickListener() {
-//            val intent = Intent(this, EntrenaFuerzaEje2Activity::class.java)
-//            startActivity(intent)
-//        }
-//        binding.btnEjercicioFuerza3.setOnClickListener() {
-//            val intent = Intent(this, EntrenaFuerzaEje3Activity::class.java)
-//            startActivity(intent)
-//        }
-//        binding.btnEjercicioFuerza4.setOnClickListener() {
-//            val intent = Intent(this, EntrenaFuerzaEje4Activity::class.java)
-//            startActivity(intent)
-//        }
-//        binding.btnEjercicioFuerza5.setOnClickListener() {
-//            val intent = Intent(this, EntrenaFuerzaEje5Activity::class.java)
-//            startActivity(intent)
-//        }
 
     }
 

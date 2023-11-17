@@ -6,11 +6,72 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="elevaciones_laterales">
+    <string name="salto_tijera">
 
          Comienza con los pies juntos y los brazos a los lados a continuación, salta con los pies separados y las manos sobre la cabeza
         \n\nVuelve a la posición original y realiza la siguiente repetición.
          \n\nEste ejercicio sirve para entrenar todo el cuerpo y trabaja todos los grandes grupos musculares.
+    </string>
+
+    <string name="escalada_de_montana">
+
+        Comienza en posición para hacer flexiones, trae la rodilla derecha hacia el pecho, pega un salto y cambie de pie en el aire, metiendo el pie izquierdo y sacando el derecho.
+        \n\nEste ejercicio fortalece diversos grupos musculares además del sistema cardiovascular.
+    </string>
+
+    <string name="crunch_abdominales">
+
+        Túmbate boca arriba con las rodillas flexionadas y los brazos extendidos hacia adelante.
+        \n\n A continuación, levanta el tren superior del suelo.
+        \n Aguanta unos segundos y vuelve  la posición original lentamente.
+        \n\n Sobre todo, se trabajan el músculo del recto del abdomen y los oblicuos.
+
+    </string>
+    <string name="elevaciones_piernas">
+
+        Túmbate de espalda y coloca las manos debajo de las caderas a modo de apoyo.
+        \n\n Luego eleva las piernas rectas hasta formar un ángulo recto con el suelo. Baja las piernas despacio y vuelve a repetir.
+
+    </string>
+
+    <string name="bicicleta_abdominales">
+
+        Túmbate recto en el suelo, con las manos sujetando la cabeza, levanta las rodillas y realice un movimiento de pedaleo, tocando los codos con la rodilla contraria mientras vas girando hacia adelante y atrás.
+
+    </string>
+
+    <string name="elevaciones_laterales">
+
+        Colócate de pie y con los pies alineados con los hombros.
+         \n\n Eleva los brazos hacia los lados a la altura de los hombros y bájalos. Repite el ejercicio.
+
+    </string>
+
+    <string name="flexiones_diamante">
+
+        Comienza en posición para hacer flexiones
+         \n\n Luego crea una forma de diamante debajo del pecho juntando los dedos indices y pulgares y luego presiona el cuerpo arriba y abajo.
+         \n\n Recuerda mantener el torso en linea recta.
+
+    </string>
+
+    <string name="plancha_diagonal">
+
+        Comienza en posición de plancha. Eleva el brazo derecho y la pierna izquierda en paralelo con el suelo.
+         \n\n Vuelve a la posición de inicio y repite con las extremidades contrarias.
+
+    </string>
+    <string name="punetazos">
+
+       De pie, colócate con una de las piernas delante y las rodillas ligeramente flexionadas.
+         \n\n Flexiona los codos y cierra los puños por delante de la cara. Extiende un brazo hacia adelante con la palma de la mano hacia abajo.
+        \n\n Vuelve a contraer el brazo y repite con el brazo contrario.
+    </string>
+
+    <string name="plancha_step">
+
+      Comienza en posición de flexión pero con las manos en alto sobre el step.
+        \n\n Luego presiona el cuerpo hacia arriba y hacia abajo con la fuerza de los brazos. Para mantener el torso en linea recta.
     </string>
 
 </resources>
